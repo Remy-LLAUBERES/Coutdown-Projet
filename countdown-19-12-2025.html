@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compte à Rebours - Projet personnel</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        @font-face {
+			font-family: 'PoliceEcriture';
+			src: url('Police_site/showcard-gothic.ttf') format('truetype');
+			font-weight: normal;
+			font-style: normal;
+		}
+        
+        :root {
+            --color-yellow-vif: #f4d03f;
+            --lettre-spacing: 2px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: #1a2332;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Effet de pluie en arrière-plan */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(transparent 95%, rgba(255, 255, 255, 0.05) 100%);
+            background-size: 100% 50px;
+            animation: rain 0.5s linear infinite;
+            pointer-events: none;
+            opacity: 0.3;
+        }
+
+        @keyframes rain {
+            0% { background-position: 0% 0%; }
+            100% { background-position: 0% 50px; }
+        }
+
+        .container {
+            background: #1e2938;
+            border: 4px solid #d4af37;
+            border-radius: 20px;
+            padding: 60px 40px;
+            max-width: 900px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 
+                0 20px 60px rgba(0, 0, 0, 0.5), 
+                0 0 20px rgba(212, 175, 55, 0.3),
+                0 0 40px rgba(212, 175, 55, 0.2),
+                inset 0 2px 0 rgba(255, 255, 255, 0.1),
+                inset 0 -2px 0 rgba(0, 0, 0, 0.3);
+            position: relative;
+            z-index: 1;
+            animation: borderGlow 3s ease-in-out infinite;
+        }
+        
+        @keyframes borderGlow {
+            0%, 100% { 
+                box-shadow: 
+                    0 20px 60px rgba(0, 0, 0, 0.5), 
+                    0 0 20px rgba(212, 175, 55, 0.3),
+                    0 0 40px rgba(212, 175, 55, 0.2),
+                    inset 0 2px 0 rgba(255, 255, 255, 0.1),
+                    inset 0 -2px 0 rgba(0, 0, 0, 0.3);
+            }
+            50% { 
+                box-shadow: 
+                    0 20px 60px rgba(0, 0, 0, 0.5), 
+                    0 0 30px rgba(212, 175, 55, 0.5),
+                    0 0 60px rgba(212, 175, 55, 0.3),
+                    0 0 90px rgba(212, 175, 55, 0.1),
+                    inset 0 2px 0 rgba(255, 255, 255, 0.1),
+                    inset 0 -2px 0 rgba(0, 0, 0, 0.3);
+            }
+        }
+
+        .logo {
+            font-size: 3em;
+            margin-bottom: 20px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        h1 {
+            font-family: 'PoliceEcriture', Arial, sans-serif;
+			color: var(--color-yellow-vif);
+			letter-spacing: var(--lettre-spacing);
+			margin: 0;
+			padding: 0.5em 0
+        }
+
+        .subtitle {
+            font-size: 1.2em;
+            font-weight: 400;
+            margin-bottom: 40px;
+            color: #ffffff;
+            opacity: 0.95;
+        }
+
+        .subtitle strong {
+            color: #f4d03f;
+            font-weight: 500;
+        }
+
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+            margin: 50px 0;
+        }
+
+        .time-box {
+            background: #2a3647;
+            border: 3px solid #d4af37;
+            border-radius: 15px;
+            padding: 30px 20px;
+            min-width: 140px;
+            box-shadow: 
+                0 10px 30px rgba(0, 0, 0, 0.4), 
+                0 0 15px rgba(212, 175, 55, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Effet de brillance animé au survol */
+        .time-box::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                45deg,
+                transparent 30%,
+                rgba(244, 208, 63, 0.1) 50%,
+                transparent 70%
+            );
+            transform: rotate(45deg);
+            transition: all 0.6s ease;
+            opacity: 0;
+        }
+        
+        .time-box:hover::before {
+            opacity: 1;
+            animation: shine 1.5s ease-in-out infinite;
+        }
+        
+        @keyframes shine {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        .time-box:hover {
+            transform: translateY(-10px);
+            background: #314152;
+            border-color: #f4d03f;
+            box-shadow: 
+                0 15px 40px rgba(0, 0, 0, 0.5), 
+                0 0 30px rgba(244, 208, 63, 0.4),
+                0 0 50px rgba(244, 208, 63, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        }
+
+        .time-value {
+            font-family: 'PoliceEcriture', Arial, sans-serif;
+            font-size: 4em;
+            font-weight: normal;
+            color: var(--color-yellow-vif);
+            line-height: 1;
+            /* Effet de brillance avec gradient */
+            background: linear-gradient(180deg, #ffe44d 0%, #f4d03f 50%, #d4a22e 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            /* Ombres multiples pour effet 3D et glow */
+            text-shadow: 
+                2px 2px 0px #d4af37,
+                3px 3px 0px #b8941f,
+                4px 4px 8px rgba(0, 0, 0, 0.5),
+                0 0 15px rgba(244, 208, 63, 0.5),
+                0 0 25px rgba(244, 208, 63, 0.3);
+            filter: drop-shadow(2px 2px 0px #d4af37) 
+                    drop-shadow(0 0 8px rgba(244, 208, 63, 0.4));
+        }
+
+        .time-label {
+            font-size: 1.1em;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.9);
+            margin-top: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .message-container {
+            display: none;
+            animation: fadeIn 1s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .celebration {
+            font-size: 5em;
+            margin-bottom: 20px;
+            animation: bounce 1s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .redirect-message {
+            font-size: 1.5em;
+            font-weight: 600;
+            margin-top: 30px;
+            color: #ffffff;
+        }
+
+        .redirect-timer {
+            font-family: 'PoliceEcriture', Arial, sans-serif;
+            font-size: 3em;
+            font-weight: normal;
+            color: var(--color-yellow-vif);
+            margin: 20px 0;
+            /* Effet de brillance avec gradient */
+            background: linear-gradient(180deg, #ffe44d 0%, #f4d03f 50%, #d4a22e 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            /* Ombres multiples et glow intense */
+            text-shadow: 
+                2px 2px 0px #d4af37,
+                4px 4px 0px #b8941f,
+                6px 6px 10px rgba(0, 0, 0, 0.6),
+                0 0 20px rgba(244, 208, 63, 0.6),
+                0 0 40px rgba(244, 208, 63, 0.4),
+                0 0 60px rgba(244, 208, 63, 0.2);
+            filter: drop-shadow(2px 2px 0px #d4af37) 
+                    drop-shadow(0 0 15px rgba(244, 208, 63, 0.5));
+            animation: glowPulse 1.5s ease-in-out infinite;
+        }
+        
+        @keyframes glowPulse {
+            0%, 100% { 
+                filter: drop-shadow(2px 2px 0px #d4af37) 
+                        drop-shadow(0 0 15px rgba(244, 208, 63, 0.5));
+            }
+            50% { 
+                filter: drop-shadow(2px 2px 0px #d4af37) 
+                        drop-shadow(0 0 25px rgba(244, 208, 63, 0.8))
+                        drop-shadow(0 0 40px rgba(244, 208, 63, 0.4));
+            }
+        }
+
+        .info-text {
+            margin-top: 50px;
+            font-size: 1.1em;
+            color: #e0e0e0;
+            opacity: 0.95;
+            line-height: 1.8;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .info-text strong {
+            color: #f4d03f;
+            font-weight: 600;
+        }
+
+        .stormy-icon {
+            font-size: 2em;
+            opacity: 0.7;
+            margin: 20px 0;
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2em; }
+            .subtitle { font-size: 1.1em; }
+            .time-value { font-size: 3em; }
+            .time-box { min-width: 100px; padding: 20px 15px; }
+            .container { padding: 40px 25px; }
+        }
+
+        @media (max-width: 480px) {
+            h1 { font-size: 1.6em; }
+            .subtitle { font-size: 1em; }
+            .time-value { font-size: 2.5em; }
+            .time-box { min-width: 80px; padding: 15px 10px; gap: 15px; }
+            .time-label { font-size: 0.9em; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container"> 
+        <div id="countdownSection">
+            <h1>Une Nouvelle Aventure Commence Bientôt...</h1>
+            <div class="subtitle">Rendez-vous le <strong>19 Décembre 2025 à 21h00</strong></div>
+            
+            <div class="countdown" id="countdown">
+                <div class="time-box">
+                    <div class="time-value" id="days">00</div>
+                    <div class="time-label">Jours</div>
+                </div>
+                <div class="time-box">
+                    <div class="time-value" id="hours">00</div>
+                    <div class="time-label">Heures</div>
+                </div>
+                <div class="time-box">
+                    <div class="time-value" id="minutes">00</div>
+                    <div class="time-label">Minutes</div>
+                </div>
+                <div class="time-box">
+                    <div class="time-value" id="seconds">00</div>
+                    <div class="time-label">Secondes</div>
+                </div>
+            </div>
+
+            <div class="info-text">
+                Chaque grande aventure commence par une attente. Celle-ci touche à sa fin. 
+				Dans quelques jours, vous découvrirez un univers créé avec <strong>soin</strong> et <strong>passion</strong>, 
+				où chaque détail compte. 
+				Une expérience pensée pour être vécue <strong>en famille</strong> ou <strong>entre amis</strong>, 
+				depuis le confort de votre salon. Le mystère sera levé le <strong>19 décembre à 21h00</strong>. 
+				Préparez votre curiosité... et votre perspicacité..
+            </div>
+        </div>
+
+        <div class="message-container" id="messageContainer">
+            <div class="celebration">🎉 🎊 🎉</div>
+            <h1>C'est l'heure !</h1>
+            <div class="redirect-message">
+                Redirection vers mon projet dans...
+            </div>
+            <div class="redirect-timer" id="redirectTimer">5</div>
+        </div>
+    </div>
+
+    <script>
+        // Date cible : 19 décembre 2025 à 21h00
+        const targetDate = new Date('2025-12-19T21:00:00').getTime();
+        const redirectUrl = 'https://test-remy.tca-rsi.fr/';
+        let redirectCountdown = 5;
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+
+            if (distance < 0) {
+                // Le countdown est terminé - afficher le message et rediriger
+                document.getElementById('countdownSection').style.display = 'none';
+                document.getElementById('messageContainer').style.display = 'block';
+                
+                // Démarrer le compte à rebours de redirection
+                startRedirectCountdown();
+                return;
+            }
+
+            // Calculs
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Affichage avec zéros devant si nécessaire
+            document.getElementById('days').textContent = String(days).padStart(2, '0');
+            document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+            document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+            document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+        }
+
+        function startRedirectCountdown() {
+            const timerElement = document.getElementById('redirectTimer');
+            
+            const redirectInterval = setInterval(() => {
+                redirectCountdown--;
+                timerElement.textContent = redirectCountdown;
+                
+                if (redirectCountdown <= 0) {
+                    clearInterval(redirectInterval);
+                    // Redirection vers le site d'escape game
+                    window.location.href = redirectUrl;
+                }
+            }, 1000);
+        }
+
+        // Mise à jour toutes les secondes
+        updateCountdown();
+        const countdownInterval = setInterval(updateCountdown, 1000);
+
+        // Animation du titre de la page
+        let titleIndex = 0;
+        const titles = [
+            '⏰ Compte à Rebours',
+            '🚀 Aventure Imminente',
+            '🎮 Escape Game',
+            '🏠 À la Maison'
+        ];
+        
+        setInterval(() => {
+            titleIndex = (titleIndex + 1) % titles.length;
+            document.title = titles[titleIndex];
+        }, 3000);
+    </script>
+</body>
+</html>
