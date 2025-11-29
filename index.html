@@ -680,7 +680,84 @@
                 btn.textContent = '▼ Révéler l\'énigme';
             }
         }
-
+// Fonction de validation et soumission
+        async function validateAndSubmit(event, enigmeId, correctAnswer) {
+            event.preventDefault();
+            
+            const form = event.target;
+            const nomInput = document.getElementById('nom-' + enigmeId);
+            const reponseInput = document.getElementById('reponse-' + enigmeId);
+            const validationMsg = document.getElementById('validation-' + enigmeId);
+            
+            const nom = nomInput.value.trim();
+            const reponse = reponseInput.value.trim();
+            
+            // Validation de la réponse
+            const isCorrect = reponse === correctAnswer;
+            
+            // Afficher le message de validation
+            validationMsg.style.display = 'block';
+            
+            if (isCorrect) {
+                validationMsg.className = 'validation-message validation-success';
+                validationMsg.textContent = 'Bravo ' + nom + ' ! Votre réponse est correcte ! 🎉';
+                
+                // Envoyer à Formspree
+                const formData = new FormData();
+                formData.append('enigme', 'Transmission #' + enigmeId);
+                formData.append('nom', nom);
+                formData.append('reponse', reponse);
+                formData.append('statut', 'Correcte ✅');
+                
+                try {
+                    await fetch('https://formspree.io/f/xqavlbwk', {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    });
+                } catch (error) {
+                    console.error('Erreur lors de l\'envoi:', error);
+                }
+                
+                // Désactiver le formulaire après succès
+                setTimeout(() => {
+                    form.querySelector('.submit-btn').textContent = '✅ Réponse validée';
+                    form.querySelector('.submit-btn').disabled = true;
+                    form.querySelector('.submit-btn').style.background = '#2ecc71';
+                    reponseInput.disabled = true;
+                }, 1500);
+                
+            } else {
+                validationMsg.className = 'validation-message validation-error';
+                validationMsg.textContent = 'Désolé ' + nom + ', ce n\'est pas la bonne réponse. Réessayez ! 💪';
+                
+                // Envoyer quand même à Formspree pour tracking
+                const formData = new FormData();
+                formData.append('enigme', 'Transmission #' + enigmeId);
+                formData.append('nom', nom);
+                formData.append('reponse', reponse);
+                formData.append('statut', 'Incorrecte ❌');
+                
+                try {
+                    await fetch('https://formspree.io/f/xqavlbwk', {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    });
+                } catch (error) {
+                    console.error('Erreur lors de l\'envoi:', error);
+                }
+                
+                // Effacer le message d'erreur après 5 secondes
+                setTimeout(() => {
+                    validationMsg.style.display = 'none';
+                }, 5000);
+            }
+        }
         // Mise à jour toutes les secondes
         updateCountdown();
         setInterval(updateCountdown, 1000);
