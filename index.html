@@ -9,11 +9,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
         @font-face {
-			font-family: 'PoliceEcriture';
-			src: url('showcard-gothic.ttf') format('truetype');
-			font-weight: normal;
-			font-style: normal;
-		}
+            font-family: 'PoliceEcriture';
+            src: url('showcard-gothic.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
         
         :root {
             --color-yellow-vif: #f4d03f;
@@ -37,6 +37,7 @@
             color: #ffffff;
             overflow-x: hidden;
             position: relative;
+            padding: 40px 20px;
         }
 
         /* Effet de pluie en arrière-plan */
@@ -77,6 +78,7 @@
             position: relative;
             z-index: 1;
             animation: borderGlow 3s ease-in-out infinite;
+            margin-bottom: 40px;
         }
         
         @keyframes borderGlow {
@@ -99,23 +101,12 @@
             }
         }
 
-        .logo {
-            font-size: 3em;
-            margin-bottom: 20px;
-            animation: pulse 2s ease-in-out infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-        }
-
         h1 {
             font-family: 'PoliceEcriture', Arial, sans-serif;
-			color: var(--color-yellow-vif);
-			letter-spacing: var(--lettre-spacing);
-			margin: 0;
-			padding: 0.5em 0
+            color: var(--color-yellow-vif);
+            letter-spacing: var(--lettre-spacing);
+            margin: 0;
+            padding: 0.5em 0;
         }
 
         .subtitle {
@@ -154,7 +145,6 @@
             overflow: hidden;
         }
         
-        /* Effet de brillance animé au survol */
         .time-box::before {
             content: '';
             position: absolute;
@@ -200,12 +190,10 @@
             font-weight: normal;
             color: var(--color-yellow-vif);
             line-height: 1;
-            /* Effet de brillance avec gradient */
             background: linear-gradient(180deg, #ffe44d 0%, #f4d03f 50%, #d4a22e 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            /* Ombres multiples pour effet 3D et glow */
             text-shadow: 
                 2px 2px 0px #d4af37,
                 3px 3px 0px #b8941f,
@@ -225,70 +213,6 @@
             letter-spacing: 1px;
         }
 
-        .message-container {
-            display: none;
-            animation: fadeIn 1s ease-in;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: scale(0.8); }
-            to { opacity: 1; transform: scale(1); }
-        }
-
-        .celebration {
-            font-size: 5em;
-            margin-bottom: 20px;
-            animation: bounce 1s ease-in-out infinite;
-        }
-
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
-        }
-
-        .redirect-message {
-            font-size: 1.5em;
-            font-weight: 600;
-            margin-top: 30px;
-            color: #ffffff;
-        }
-
-        .redirect-timer {
-            font-family: 'PoliceEcriture', Arial, sans-serif;
-            font-size: 3em;
-            font-weight: normal;
-            color: var(--color-yellow-vif);
-            margin: 20px 0;
-            /* Effet de brillance avec gradient */
-            background: linear-gradient(180deg, #ffe44d 0%, #f4d03f 50%, #d4a22e 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            /* Ombres multiples et glow intense */
-            text-shadow: 
-                2px 2px 0px #d4af37,
-                4px 4px 0px #b8941f,
-                6px 6px 10px rgba(0, 0, 0, 0.6),
-                0 0 20px rgba(244, 208, 63, 0.6),
-                0 0 40px rgba(244, 208, 63, 0.4),
-                0 0 60px rgba(244, 208, 63, 0.2);
-            filter: drop-shadow(2px 2px 0px #d4af37) 
-                    drop-shadow(0 0 15px rgba(244, 208, 63, 0.5));
-            animation: glowPulse 1.5s ease-in-out infinite;
-        }
-        
-        @keyframes glowPulse {
-            0%, 100% { 
-                filter: drop-shadow(2px 2px 0px #d4af37) 
-                        drop-shadow(0 0 15px rgba(244, 208, 63, 0.5));
-            }
-            50% { 
-                filter: drop-shadow(2px 2px 0px #d4af37) 
-                        drop-shadow(0 0 25px rgba(244, 208, 63, 0.8))
-                        drop-shadow(0 0 40px rgba(244, 208, 63, 0.4));
-            }
-        }
-
         .info-text {
             margin-top: 50px;
             font-size: 1.1em;
@@ -305,18 +229,247 @@
             font-weight: 600;
         }
 
-        .stormy-icon {
+        /* SECTION TRANSMISSIONS */
+        .transmissions-section {
+            max-width: 900px;
+            width: 90%;
+            margin-top: 40px;
+        }
+
+        .transmissions-title {
+            font-family: 'PoliceEcriture', Arial, sans-serif;
+            color: var(--color-yellow-vif);
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            text-align: center;
+            letter-spacing: var(--lettre-spacing);
+        }
+
+        .enigme {
+            background: #1e2938;
+            border: 3px solid #d4af37;
+            border-radius: 15px;
+            margin-bottom: 25px;
+            overflow: hidden;
+            box-shadow: 
+                0 10px 30px rgba(0, 0, 0, 0.4), 
+                0 0 15px rgba(212, 175, 55, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .enigme:hover {
+            border-color: #f4d03f;
+            box-shadow: 
+                0 15px 40px rgba(0, 0, 0, 0.5), 
+                0 0 25px rgba(244, 208, 63, 0.3);
+        }
+
+        .enigme-header {
+            padding: 25px 30px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background: #2a3647;
+            transition: background 0.3s ease;
+            flex-wrap: wrap;
+        }
+
+        .enigme.unlocked .enigme-header:hover {
+            background: #314152;
+        }
+
+        .enigme-icon {
             font-size: 2em;
-            opacity: 0.7;
+            min-width: 40px;
+        }
+
+        .enigme-title-block {
+            flex: 1;
+            text-align: left;
+        }
+
+        .enigme-title {
+            font-family: 'PoliceEcriture', Arial, sans-serif;
+            color: var(--color-yellow-vif);
+            font-size: 1.5em;
+            margin: 0;
+            letter-spacing: 1px;
+        }
+
+        .enigme-status {
+            font-size: 0.9em;
+            color: rgba(255, 255, 255, 0.7);
+            margin-top: 5px;
+        }
+
+        .toggle-btn {
+            background: #d4af37;
+            color: #1a2332;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1em;
+        }
+
+        .toggle-btn:hover {
+            background: #f4d03f;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(244, 208, 63, 0.4);
+        }
+
+        .enigme.locked .toggle-btn {
+            background: #555;
+            color: #999;
+            cursor: not-allowed;
+        }
+
+        .enigme.locked .toggle-btn:hover {
+            transform: none;
+            box-shadow: none;
+        }
+
+        .enigme-content {
+            display: none;
+            padding: 30px;
+            background: #1a2332;
+            border-top: 2px solid #d4af37;
+            text-align: left;
+            animation: slideDown 0.3s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                max-height: 0;
+            }
+            to {
+                opacity: 1;
+                max-height: 2000px;
+            }
+        }
+
+        .enigme-text {
+            color: #e0e0e0;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        .enigme-text h3 {
+            color: var(--color-yellow-vif);
+            margin-top: 25px;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+
+        .enigme-text ol, .enigme-text ul {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        .enigme-text li {
+            margin-bottom: 10px;
+        }
+
+        .enigme-text strong {
+            color: #f4d03f;
+        }
+
+        .enigme-text code {
+            background: #2a3647;
+            padding: 2px 8px;
+            border-radius: 4px;
+            color: #f4d03f;
+            font-family: 'Courier New', monospace;
+        }
+
+        .enigme-text pre {
+            background: #2a3647;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            border: 2px solid #d4af37;
             margin: 20px 0;
         }
 
+        /* FORMULAIRE */
+        .submission-form {
+            background: #2a3647;
+            border: 2px solid #d4af37;
+            border-radius: 12px;
+            padding: 30px;
+            margin-top: 30px;
+        }
+
+        .form-title {
+            font-family: 'PoliceEcriture', Arial, sans-serif;
+            color: var(--color-yellow-vif);
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            color: #ffffff;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #d4af37;
+            border-radius: 8px;
+            background: #1a2332;
+            color: #ffffff;
+            font-size: 1em;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #f4d03f;
+            box-shadow: 0 0 15px rgba(244, 208, 63, 0.3);
+        }
+
+        .submit-btn {
+            width: 100%;
+            background: #d4af37;
+            color: #1a2332;
+            border: none;
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 1.1em;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .submit-btn:hover {
+            background: #f4d03f;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(244, 208, 63, 0.4);
+        }
+
+        /* RESPONSIVE */
         @media (max-width: 768px) {
             h1 { font-size: 2em; }
             .subtitle { font-size: 1.1em; }
             .time-value { font-size: 3em; }
             .time-box { min-width: 100px; padding: 20px 15px; }
             .container { padding: 40px 25px; }
+            .enigme-header { flex-direction: column; text-align: center; }
+            .enigme-title-block { text-align: center; }
+            .transmissions-title { font-size: 2em; }
         }
 
         @media (max-width: 480px) {
@@ -325,10 +478,13 @@
             .time-value { font-size: 2.5em; }
             .time-box { min-width: 80px; padding: 15px 10px; gap: 15px; }
             .time-label { font-size: 0.9em; }
+            .enigme-title { font-size: 1.2em; }
+            .enigme-content { padding: 20px; }
         }
     </style>
 </head>
 <body>
+    <!-- COUNTDOWN PRINCIPAL -->
     <div class="container"> 
         <div id="countdownSection">
             <h1>Une Nouvelle Aventure Commence Bientôt...</h1>
@@ -355,41 +511,105 @@
 
             <div class="info-text">
                 Chaque grande aventure commence par une attente. Celle-ci touche à sa fin. 
-				Dans quelques jours, vous découvrirez un univers créé avec <strong>soin</strong> et <strong>passion</strong>, 
-				où chaque détail compte. 
-				Une expérience pensée pour être vécue <strong>en famille</strong> ou <strong>entre amis</strong>, 
-				depuis le confort de votre salon. Le mystère sera levé le <strong>19 décembre à 21h00</strong>. 
-				Préparez votre curiosité... et votre perspicacité..
+                Dans quelques jours, vous découvrirez un univers créé avec <strong>soin</strong> et <strong>passion</strong>, 
+                où chaque détail compte. 
+                Une expérience pensée pour être vécue <strong>en famille</strong> ou <strong>entre amis</strong>, 
+                depuis le confort de votre salon. Le mystère sera levé le <strong>19 décembre à 21h00</strong>. 
+                Préparez votre curiosité... et votre perspicacité.
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION TRANSMISSIONS -->
+    <div class="transmissions-section">
+        <h2 class="transmissions-title">🧩 TRANSMISSIONS</h2>
+
+        <!-- ÉNIGME 1 - Débloquée -->
+        <div class="enigme unlocked" id="enigme1">
+            <div class="enigme-header" onclick="toggleEnigme(1)">
+                <span class="enigme-icon">📡</span>
+                <div class="enigme-title-block">
+                    <h3 class="enigme-title">Transmission #1 — Le Nombre Fantôme</h3>
+                    <div class="enigme-status">Débloquée le 29/11 à 9h</div>
+                </div>
+                <button class="toggle-btn" id="btn-1">▼ Révéler l'énigme</button>
+            </div>
+            
+            <div class="enigme-content" id="content-1">
+                <div class="enigme-text">
+                    <h3>🧩 Transmission #1 — Le Nombre Fantôme</h3>
+                    
+                    <p>Un nombre à deux chiffres, appelons-le XY, cache le premier fragment.<br>
+                    Pour le retrouver, vous devez comprendre comment il "réagit".</p>
+                    
+                    <h3>Indications cryptiques :</h3>
+                    <ol>
+                        <li>Si vous inversez ses chiffres et soustrayez ce nouveau nombre à l'original, vous obtenez un résultat positif et multiple de 9.</li>
+                        <li>La somme de ses deux chiffres forme un nombre premier.</li>
+                        <li>Si on retire le chiffre des unités, il reste un nombre impair.</li>
+                    </ol>
+                    
+                    <p><strong>🔐 Quel est ce nombre XY ?</strong></p>
+                </div>
+
+                <form class="submission-form" action="https://formspree.io/f/xqavlbwk" method="POST">
+                    <div class="form-title">📤 Soumettre votre réponse</div>
+                    <input type="hidden" name="enigme" value="Transmission #1">
+                    
+                    <div class="form-group">
+                        <label for="nom-1">Votre nom :</label>
+                        <input type="text" id="nom-1" name="nom" required placeholder="Ex: Jean Dupont">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="reponse-1">Votre réponse :</label>
+                        <input type="text" id="reponse-1" name="reponse" required placeholder="Entrez le nombre XY">
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">📤 Envoyer ma réponse</button>
+                </form>
             </div>
         </div>
 
-        <div class="message-container" id="messageContainer">
-            <div class="celebration">🎉 🎊 🎉</div>
-            <h1>C'est l'heure !</h1>
-            <div class="redirect-message">
-                Redirection vers mon projet dans...
+        <!-- ÉNIGME 2 - Verrouillée -->
+        <div class="enigme locked" id="enigme2">
+            <div class="enigme-header">
+                <span class="enigme-icon">🔒</span>
+                <div class="enigme-title-block">
+                    <h3 class="enigme-title">Transmission #2 — Le Code Caché</h3>
+                    <div class="enigme-status">Disponible le 05/11 à 21h</div>
+                </div>
+                <button class="toggle-btn" disabled>🔒 Verrouillée</button>
             </div>
-            <div class="redirect-timer" id="redirectTimer">5</div>
+        </div>
+
+        <!-- ÉNIGME 3 - Verrouillée -->
+        <div class="enigme locked" id="enigme3">
+            <div class="enigme-header">
+                <span class="enigme-icon">🔒</span>
+                <div class="enigme-title-block">
+                    <h3 class="enigme-title">Transmission #3 — Le Message Crypté</h3>
+                    <div class="enigme-status">Disponible le 12/11 à 21h</div>
+                </div>
+                <button class="toggle-btn" disabled>🔒 Verrouillée</button>
+            </div>
         </div>
     </div>
 
     <script>
         // Date cible : 19 décembre 2025 à 21h00
         const targetDate = new Date('2025-12-19T21:00:00').getTime();
-        const redirectUrl = 'https://test-remy.tca-rsi.fr/';
-        let redirectCountdown = 5;
 
         function updateCountdown() {
             const now = new Date().getTime();
             const distance = targetDate - now;
 
             if (distance < 0) {
-                // Le countdown est terminé - afficher le message et rediriger
-                document.getElementById('countdownSection').style.display = 'none';
-                document.getElementById('messageContainer').style.display = 'block';
-                
-                // Démarrer le compte à rebours de redirection
-                startRedirectCountdown();
+                // Le countdown est terminé
+                document.getElementById('days').textContent = '00';
+                document.getElementById('hours').textContent = '00';
+                document.getElementById('minutes').textContent = '00';
+                document.getElementById('seconds').textContent = '00';
                 return;
             }
 
@@ -399,38 +619,39 @@
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-            // Affichage avec zéros devant si nécessaire
+            // Affichage
             document.getElementById('days').textContent = String(days).padStart(2, '0');
             document.getElementById('hours').textContent = String(hours).padStart(2, '0');
             document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
             document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
         }
 
-        function startRedirectCountdown() {
-            const timerElement = document.getElementById('redirectTimer');
+        // Fonction pour déplier/replier une énigme
+        function toggleEnigme(id) {
+            const content = document.getElementById('content-' + id);
+            const btn = document.getElementById('btn-' + id);
             
-            const redirectInterval = setInterval(() => {
-                redirectCountdown--;
-                timerElement.textContent = redirectCountdown;
-                
-                if (redirectCountdown <= 0) {
-                    clearInterval(redirectInterval);
-                    // Redirection vers le site d'escape game
-                    window.location.href = redirectUrl;
-                }
-            }, 1000);
+            if (!content) return; // Énigme verrouillée
+            
+            if (content.style.display === 'none' || content.style.display === '') {
+                content.style.display = 'block';
+                btn.textContent = '▲ Masquer l\'énigme';
+            } else {
+                content.style.display = 'none';
+                btn.textContent = '▼ Révéler l\'énigme';
+            }
         }
 
         // Mise à jour toutes les secondes
         updateCountdown();
-        const countdownInterval = setInterval(updateCountdown, 1000);
+        setInterval(updateCountdown, 1000);
 
         // Animation du titre de la page
         let titleIndex = 0;
         const titles = [
             '⏰ Compte à Rebours',
             '🚀 Aventure Imminente',
-			'Projet personnel'
+            '🎮 Projet personnel'
         ];
         
         setInterval(() => {
