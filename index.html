@@ -680,7 +680,8 @@
                 btn.textContent = '▼ Révéler l\'énigme';
             }
         }
-// Fonction de validation et soumission
+
+        // Fonction de validation et soumission
         async function validateAndSubmit(event, enigmeId, correctAnswer) {
             event.preventDefault();
             
@@ -758,6 +759,7 @@
                 }, 5000);
             }
         }
+
         // Mise à jour toutes les secondes
         updateCountdown();
         setInterval(updateCountdown, 1000);
