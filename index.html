@@ -459,6 +459,44 @@
             transform: translateY(-2px);
             box-shadow: 0 8px 20px rgba(244, 208, 63, 0.4);
         }
+/* MESSAGE DE VALIDATION */
+        .validation-message {
+            display: none;
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 1.1em;
+            font-weight: 600;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .validation-success {
+            background: rgba(46, 204, 113, 0.2);
+            border: 2px solid #2ecc71;
+            color: #2ecc71;
+        }
+
+        .validation-success::before {
+            content: '✅ ';
+            font-size: 1.5em;
+        }
+
+        .validation-error {
+            background: rgba(231, 76, 60, 0.2);
+            border: 2px solid #e74c3c;
+            color: #e74c3c;
+        }
+
+        .validation-error::before {
+            content: '❌ ';
+            font-size: 1.5em;
+        }
 
         /* RESPONSIVE */
         @media (max-width: 768px) {
@@ -552,9 +590,8 @@
                     <p><strong>🔐 Quel est ce nombre XY ?</strong></p>
                 </div>
 
-                <form class="submission-form" action="https://formspree.io/f/xqavlbwk" method="POST">
+                <form class="submission-form" id="form-1" onsubmit="validateAndSubmit(event, 1, '19')">
                     <div class="form-title">📤 Soumettre votre réponse</div>
-                    <input type="hidden" name="enigme" value="Transmission #1">
                     
                     <div class="form-group">
                         <label for="nom-1">Votre nom :</label>
@@ -566,7 +603,9 @@
                         <input type="text" id="reponse-1" name="reponse" required placeholder="Entrez le nombre XY">
                     </div>
                     
-                    <button type="submit" class="submit-btn">📤 Envoyer ma réponse</button>
+                    <button type="submit" class="submit-btn">📤 Vérifier ma réponse</button>
+                    
+                    <div class="validation-message" id="validation-1"></div>
                 </form>
             </div>
         </div>
