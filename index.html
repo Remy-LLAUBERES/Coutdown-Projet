@@ -610,15 +610,80 @@
             </div>
         </div>
 
-        <!-- ÉNIGME 2 - Verrouillée -->
-        <div class="enigme locked" id="enigme2">
-            <div class="enigme-header">
-                <span class="enigme-icon">🔒</span>
+        <!-- ÉNIGME 2 - Débloquée -->
+        <div class="enigme unlocked" id="enigme2">
+            <div class="enigme-header" onclick="toggleEnigme(2)">
+                <span class="enigme-icon">📡</span>
                 <div class="enigme-title-block">
                     <h3 class="enigme-title">Transmission #2 — Le Code Caché</h3>
-                    <div class="enigme-status">Disponible le 05/12 à 21h</div>
+                    <div class="enigme-status">Débloquée le 05/12 à 21h</div>
                 </div>
-                <button class="toggle-btn" disabled>🔒 Verrouillée</button>
+                <button class="toggle-btn" id="btn-2">▼ Révéler l'énigme</button>
+            </div>
+            
+            <div class="enigme-content" id="content-2">
+                <div class="enigme-text">
+                                        
+                    <h3>🧩 Transmission #2 — Le Code Caché</h3>
+                    
+                    <h3>📜 Étape 1 — Résolvez les devinettes</h3>
+                    <p>Voici <strong>7 devinettes</strong>. Chaque réponse est un <strong>mot simple</strong>.</p>
+                    
+                    <ol>
+                        <li>Je suis un monstre mangeur d'hommes.</li>
+                        <li>Je suis un rongeur nuisible qui vit dans les égouts.</li>
+                        <li>Je suis le fruit du pommier.</li>
+                        <li>Je suis la durée de vie d'une personne.</li>
+                        <li>Je suis un stand de marché pour vendre des produits.</li>
+                        <li>Je suis ce qu'on respire.</li>
+                        <li>Je suis un terrain où l'on cultive des légumes.</li>
+                    </ol>
+                    
+                    <p>✏️ <strong>Trouvez les 7 mots.</strong></p>
+                    
+                    <h3>📜 Étape 2 — Utilisez la clé : 10</h3>
+                    <p>Le nombre <strong>10</strong> signifie : <strong>Position 10</strong></p>
+                    
+                    <p><strong>Méthode :</strong></p>
+                    <ol>
+                        <li>Pour chaque mot trouvé, comptez jusqu'à la <strong>10ème lettre</strong></li>
+                        <li><strong>Si le mot a moins de 10 lettres</strong>, <strong>bouclez</strong> : revenez à la 1ère lettre et continuez à compter</li>
+                        <li>Prenez la lettre obtenue</li>
+                    </ol>
+                    
+                    <p><strong>Exemple de comptage :</strong></p>
+                    <ul>
+                        <li>Mot : <strong>CHAT</strong> (4 lettres : C-H-A-T)</li>
+                        <li>Comptage : 1=C, 2=H, 3=A, 4=T, 5=C, 6=H, 7=A, 8=T, 9=C, 10=H</li>
+                        <li>Lettre en position 10 : <strong>H</strong></li>
+                    </ul>
+                    
+                    <h3>📜 Étape 3 — Trouvez le mot final</h3>
+                    <p>Les <strong>7 lettres</strong> extraites <strong>ne forment pas un mot français</strong> dans cet ordre.<br>
+                    <strong>Réordonnez-les pour découvrir le Fragment #2.</strong></p>
+                    
+                    <p><strong>🔍 Quel est ce mot de 7 lettres ?</strong></p>
+                    
+                    <p>Bonne chance ! 🕵️</p>
+                </div>
+
+                <form class="submission-form" id="form-2" onsubmit="validateAndSubmit(event, 2, 'PARTAGE')">
+                    <div class="form-title">📤 Soumettre votre réponse</div>
+                    
+                    <div class="form-group">
+                        <label for="nom-2">Votre nom :</label>
+                        <input type="text" id="nom-2" name="nom" required placeholder="Ex: Jean Dupont">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="reponse-2">Votre réponse :</label>
+                        <input type="text" id="reponse-2" name="reponse" required placeholder="Entrez le mot de 7 lettres">
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">📤 Vérifier ma réponse</button>
+                    
+                    <div class="validation-message" id="validation-2"></div>
+                </form>
             </div>
         </div>
 
