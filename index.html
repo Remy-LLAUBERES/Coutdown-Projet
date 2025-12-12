@@ -688,16 +688,110 @@
         </div>
 
         <!-- ÉNIGME 3 - Verrouillée -->
-        <div class="enigme locked" id="enigme3">
-            <div class="enigme-header">
-                <span class="enigme-icon">🔒</span>
-                <div class="enigme-title-block">
-                    <h3 class="enigme-title">Transmission #3 — Le Message Crypté</h3>
-                    <div class="enigme-status">Disponible le 12/12 à 21h</div>
-                </div>
-                <button class="toggle-btn" disabled>🔒 Verrouillée</button>
-            </div>
-        </div>
+       <div class="enigme unlocked" id="enigme3">
+			<div class="enigme-header" onclick="toggleEnigme(3)">
+				<span class="enigme-icon">📡</span>
+				<div class="enigme-title-block">
+					<h3 class="enigme-title">Transmission #3 — Le Message Crypté</h3>
+					<div class="enigme-status">Débloquée le 12/12 à 21h</div>
+				</div>
+				<button class="toggle-btn" id="btn-3">▼ Révéler l'énigme</button>
+			</div>
+			
+			<div class="enigme-content" id="content-3">
+				<div class="enigme-text">
+										
+					<h3>🧩 Transmission #3 — Le Message Crypté</h3>
+					
+					<p>Vous avez trouvé le Fragment #2 : <strong>PARTAGE</strong>.<br>
+					Ce mot est la clé pour déchiffrer le Fragment #3.</p>
+					
+					<h3>🔐 Le message crypté</h3>
+					<p>Voici un message codé. Pour le déchiffrer, vous devez utiliser le mot <strong>PARTAGE</strong> comme clé de décalage.</p>
+					
+					<p><strong>Message crypté :</strong></p>
+					<pre>HFFXFGA-EVK FF KNNOWOG</pre>
+					
+					<h3>🔢 Méthode de déchiffrement</h3>
+					<p>Le mot <strong>PARTAGE</strong> indique un <strong>décalage variable</strong> dans l'alphabet pour chaque lettre du message.</p>
+					
+					<p><strong>Comment ça marche :</strong></p>
+					
+					<p>1. Chaque lettre du mot <strong>PARTAGE</strong> correspond à un <strong>rang dans l'alphabet</strong> :</p>
+					<ul>
+						<li>P = 16</li>
+						<li>A = 1</li>
+						<li>R = 18</li>
+						<li>T = 20</li>
+						<li>A = 1</li>
+						<li>G = 7</li>
+						<li>E = 5</li>
+					</ul>
+					
+					<p>2. Pour déchiffrer le message, vous devez <strong>soustraire</strong> ces valeurs (en boucle) à chaque lettre du message crypté.</p>
+					
+					<p>3. Si la clé est plus courte que le message, <strong>répétez la clé</strong> (PARTAGE, PARTAGE, PARTAGE...)</p>
+					
+					<p>4. <strong>Important :</strong> Ne comptez que les lettres, ignorez les tirets et espaces dans le comptage de la clé.</p>
+					
+					<h3>Exemple de déchiffrement avec une autre clé :</h3>
+					
+					<p><strong>Clé : CLE (C=3, L=12, E=5)</strong><br>
+					<strong>Message crypté : PGW</strong></p>
+					
+					<p><strong>1ère lettre :</strong></p>
+					<ul>
+						<li>Message : <strong>P</strong> (rang 16)</li>
+						<li>Clé : <strong>C</strong> (rang 3)</li>
+						<li>Calcul : P (16) - C (3) = 13 → <strong>M</strong></li>
+					</ul>
+					
+					<p><strong>2ème lettre :</strong></p>
+					<ul>
+						<li>Message : <strong>G</strong> (rang 7)</li>
+						<li>Clé : <strong>L</strong> (rang 12)</li>
+						<li>Calcul : G (7) - L (12) = -5 → on ajoute 26 : -5 + 26 = 21 → <strong>U</strong></li>
+					</ul>
+					
+					<p><strong>3ème lettre :</strong></p>
+					<ul>
+						<li>Message : <strong>W</strong> (rang 23)</li>
+						<li>Clé : <strong>E</strong> (rang 5)</li>
+						<li>Calcul : W (23) - E (5) = 18 → <strong>R</strong></li>
+					</ul>
+					
+					<p>Résultat déchiffré : <strong>MUR</strong></p>
+					
+					<p>Maintenant, à vous de déchiffrer le vrai message avec la clé <strong>PARTAGE</strong> !</p>
+					
+					<h3>🔍 Mission</h3>
+					<p>Déchiffrez le message complet pour découvrir le Fragment #3.</p>
+					
+					<p><strong>🔐 Quel est le message caché ?</strong></p>
+					<p><strong>Message crypté :</strong></p>
+					<pre>HFFXFGA-EVK FF KNNOWOG</pre>
+					<p>Bonne chance ! 🕵️</p>
+				</div>
+
+				<form class="submission-form" id="form-3" onsubmit="validateAndSubmit(event, 3, ['RENDEZ-VOUS LE DIX-NEUF', 'RENDEZVOUS LE DIX-NEUF', 'RENDEZVOUS LE DIXNEUF', 'RENDEZ-VOUS LE DIXNEUF', 'RENDEZ VOUS LE DIX NEUF', 'Rendez-vous le dix-neuf', 'RENDEZ-VOUS LE 19', 'Rendez-vous le 19'])">
+					<div class="form-title">📤 Soumettre votre réponse</div>
+					
+					<div class="form-group">
+						<label for="nom-3">Votre nom :</label>
+						<input type="text" id="nom-3" name="nom" required placeholder="Ex: Jean Dupont">
+					</div>
+					
+					<div class="form-group">
+						<label for="reponse-3">Votre réponse :</label>
+						<input type="text" id="reponse-3" name="reponse" required placeholder="Entrez le message déchiffré">
+					</div>
+					
+					<button type="submit" class="submit-btn">📤 Vérifier ma réponse</button>
+					
+					<div class="validation-message" id="validation-3"></div>
+				</form>
+			</div>
+		</div>
     </div>
 
     <script>
