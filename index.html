@@ -519,6 +519,137 @@
             .enigme-title { font-size: 1.2em; }
             .enigme-content { padding: 20px; }
         }
+		.intro {
+            background: #2a3647;
+            border-left: 4px solid #d4af37;
+            padding: 20px;
+            margin-bottom: 40px;
+            border-radius: 8px;
+        }
+
+        .intro p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        .form-section {
+            margin-bottom: 30px;
+        }
+
+        .form-section label {
+            display: block;
+            color: #f4d03f;
+            font-weight: 600;
+            font-size: 1.1em;
+            margin-bottom: 10px;
+        }
+
+        .form-section input[type="text"],
+        .form-section textarea,
+        .form-section select {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #d4af37;
+            border-radius: 8px;
+            background: #1a2332;
+            color: #ffffff;
+            font-size: 1em;
+            font-family: 'Roboto', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .form-section textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .form-section input:focus,
+        .form-section textarea:focus,
+        .form-section select:focus {
+            outline: none;
+            border-color: #f4d03f;
+            box-shadow: 0 0 15px rgba(244, 208, 63, 0.3);
+        }
+
+        .form-section small {
+            display: block;
+            margin-top: 8px;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9em;
+        }
+
+        .radio-group,
+        .checkbox-group {
+            margin-top: 15px;
+        }
+
+        .radio-group label,
+        .checkbox-group label {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            margin-bottom: 10px;
+            background: #2a3647;
+            border: 2px solid #3a4657;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 400;
+            color: #ffffff;
+        }
+
+        .radio-group label:hover,
+        .checkbox-group label:hover {
+            background: #314152;
+            border-color: #d4af37;
+        }
+
+        .radio-group input[type="radio"],
+        .checkbox-group input[type="checkbox"] {
+            margin-right: 12px;
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+
+        .rating-scale {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+            gap: 10px;
+        }
+
+        .rating-option {
+            flex: 1;
+            text-align: center;
+        }
+
+        .rating-option input[type="radio"] {
+            display: none;
+        }
+
+        .rating-option label {
+            display: block;
+            padding: 15px 10px;
+            background: #2a3647;
+            border: 2px solid #3a4657;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.5em;
+        }
+
+        .rating-option input[type="radio"]:checked + label {
+            background: #d4af37;
+            border-color: #f4d03f;
+            color: #1a2332;
+            transform: scale(1.1);
+        }
+
+        .rating-option label:hover {
+            border-color: #d4af37;
+            transform: scale(1.05);
+        }
     </style>
 </head>
 <body>
@@ -793,7 +924,141 @@
 			</div>
 		</div>
     </div>
+<div class="container">
+        <h1>🎮 SONDAGE FINAL 🎮</h1>
+        <div class="subtitle">
+            <strong>Les 3 Transmissions sont terminées !</strong>
+        </div>
 
+        <div class="intro">
+            <p>🏆 <strong>6 champions ont tout résolu :</strong> Alexandra, Jennifer, Nolwenn, Elsa, Gwendoline, Jérémy</p>
+            <p>Mais il reste <strong>UNE dernière question</strong> avant le grand jour...</p>
+            <p><strong>🤔 AVEZ-VOUS COMPRIS DE QUOI IL S'AGIT ?</strong></p>
+            <p>Remplissez ce mini-sondage (2 minutes) !</p>
+            <p><strong>🎁 Les 3 premières personnes qui trouvent la bonne réponse gagneront une surprise le 19 !</strong></p>
+        </div>
+
+        <form id="surveyForm" action="https://formspree.io/f/xqavlbwk" method="POST">
+            <input type="hidden" name="type" value="Sondage Final">
+            
+            <!-- Question 1 -->
+            <div class="form-section">
+                <label>1. Votre nom / pseudo *</label>
+                <input type="text" name="nom" required placeholder="Ex: Jean Dupont">
+            </div>
+<!-- Question 4 -->
+            <div class="form-section">
+                <label>2. Sur une échelle de 1 à 5, à quel point avez-vous aimé les 3 Transmissions ? *</label>
+                <div class="rating-scale">
+                    <div class="rating-option">
+                        <input type="radio" name="satisfaction" value="1" id="rate1" required>
+                        <label for="rate1">😞<br>1</label>
+                    </div>
+                    <div class="rating-option">
+                        <input type="radio" name="satisfaction" value="2" id="rate2">
+                        <label for="rate2">😐<br>2</label>
+                    </div>
+                    <div class="rating-option">
+                        <input type="radio" name="satisfaction" value="3" id="rate3">
+                        <label for="rate3">🙂<br>3</label>
+                    </div>
+                    <div class="rating-option">
+                        <input type="radio" name="satisfaction" value="4" id="rate4">
+                        <label for="rate4">😊<br>4</label>
+                    </div>
+                    <div class="rating-option">
+                        <input type="radio" name="satisfaction" value="5" id="rate5">
+                        <label for="rate5">🤩<br>5</label>
+                    </div>
+                </div>
+            </div>
+			<!-- Question 5 -->
+            <div class="form-section">
+                <label>3. Quelle énigme avez-vous préférée ? *</label>
+                <div class="radio-group">
+                    <label>
+                        <input type="radio" name="enigme_preferee" value="Transmission #1 - Le Nombre Fantôme" required>
+                        🔢 Transmission #1 — Le Nombre Fantôme
+                    </label>
+                    <label>
+                        <input type="radio" name="enigme_preferee" value="Transmission #2 - Le Code Caché">
+                        🧩 Transmission #2 — Le Code Caché
+                    </label>
+                    <label>
+                        <input type="radio" name="enigme_preferee" value="Transmission #3 - Le Message Crypté">
+                        🔐 Transmission #3 — Le Message Crypté
+                    </label>
+                </div>
+            </div>
+			<!-- Question 7 -->
+            <div class="form-section">
+                <label>4. Un mot pour décrire votre ressenti après ces 3 semaines d'énigmes</label>
+                <input type="text" name="ressenti" placeholder="Ex: Captivant, Frustrant, Amusant...">
+            </div>
+            <!-- Question 2 -->
+            <div class="form-section">
+                <label>5. D'après vous, quel est le projet qui sera révélé le 19 décembre ? *</label>
+                <textarea name="projet_devine" required placeholder="Décrivez ce que vous pensez que c'est..."></textarea>
+                <small>💡 Soyez précis ! C'est ici que vous pouvez gagner la surprise !</small>
+            </div>
+
+            <!-- Question 3 -->
+            <div class="form-section">
+                <label>6. Qu'est-ce qui vous a mis sur la piste ? *</label>
+                <div class="checkbox-group">
+                    <label>
+                        <input type="checkbox" name="indices" value="Les énigmes elles-mêmes">
+                        Les énigmes elles-mêmes
+                    </label>
+                    <label>
+                        <input type="checkbox" name="indices" value="Le thème général">
+                        Le thème général
+                    </label>
+                    <label>
+                        <input type="checkbox" name="indices" value="Des indices cachés">
+                        Des indices cachés
+                    </label>
+                    <label>
+                        <input type="checkbox" name="indices" value="Une intuition">
+                        Une intuition
+                    </label>
+                    <label>
+                        <input type="checkbox" name="indices" value="Je n'ai aucune idée">
+                        Je n'ai aucune idée !
+                    </label>
+                </div>
+            </div>
+
+            
+
+            
+
+            <!-- Question 6 -->
+            <div class="form-section">
+                <label>7. Pensez-vous participer au projet le 19 décembre ? *</label>
+                <select name="participation" required>
+                    <option value="">-- Choisissez une réponse --</option>
+                    <option value="Oui, avec impatience !">Oui, avec impatience ! 🎉</option>
+                    <option value="Oui, probablement">Oui, probablement 👍</option>
+                    <option value="Peut-être">Peut-être 🤔</option>
+                    <option value="Non, je ne peux pas">Non, je ne peux pas 😢</option>
+                    <option value="Je ne sais pas encore">Je ne sais pas encore 🤷</option>
+                </select>
+            </div>
+
+            
+
+            <!-- Submit -->
+            <button type="submit" class="submit-btn">📤 Envoyer mes réponses</button>
+        </form>
+
+        <div class="success-message" id="successMessage">
+            <h2>✅ Merci pour votre participation !</h2>
+            <p>Vos réponses ont bien été enregistrées.</p>
+            <p>Rendez-vous le <strong>19 décembre à 21h</strong> pour la grande révélation !</p>
+        </div>
+
+        </div>
     <script>
         // Date cible : 19 décembre 2025 à 21h00
         const targetDate = new Date('2025-12-19T21:00:00').getTime();
@@ -938,6 +1203,34 @@
             titleIndex = (titleIndex + 1) % titles.length;
             document.title = titles[titleIndex];
         }, 3000);
-    </script>
+		const form = document.getElementById('surveyForm');
+        const successMessage = document.getElementById('successMessage');
+
+        form.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(form);
+            
+            try {
+                const response = await fetch('https://formspree.io/f/xqavlbwk', {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+                
+                if (response.ok) {
+                    form.style.display = 'none';
+                    successMessage.style.display = 'block';
+                } else {
+                    alert('Une erreur est survenue. Veuillez réessayer.');
+                }
+            } catch (error) {
+                alert('Une erreur est survenue. Veuillez réessayer.');
+            }
+        });
+
+        </script>
 </body>
 </html>
